@@ -14,9 +14,9 @@ POP_SIZE = 500
 MUT_RATE = 0.2
 
 #TARGET: Our goal.
-TARGET = 'Nurul'
-#TARGET = st.text_input("Enter your name")
-st.write("kl;;;;;;")
+#TARGET = 'Nurul'
+TARGET = st.text_input("Enter your name")
+
 
 #GENES: Options from which our population would be created.
 GENES = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -133,4 +133,4 @@ def main(POP_SIZE, MUT_RATE, TARGET, GENES):
       st.write('String: ' + str(population[0][0]) + ' Generation: ' + str(generation) + ' Fitness: ' + str(population[0][1]))
       generation+=1
 
-    result = main(POP_SIZE, MUT_RATE, TARGET, GENES)
+result = main(POP_SIZE, MUT_RATE, TARGET, GENES)
