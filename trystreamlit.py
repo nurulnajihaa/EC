@@ -14,11 +14,10 @@ POP_SIZE = 500
 MUT_RATE = 0.2
 
 #TARGET: Our goal.
-#TARGET = 'nurul'
-TARGET = st.text_input("Enter your name","nurul")
-
+#TARGET = 'Nurul'
+TARGET = st.text_input("Enter your name", "Nurul")
 #GENES: Options from which our population would be created.
-GENES = ' abcdefghijklmnopqrstuvwxyz'
+GENES = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 #initialization
 
@@ -67,7 +66,7 @@ def crossover(selected_chromo, CHROMO_LEN, population):
     offspring_cross.extend([child])
   return offspring_cross
 
-    #mutation
+#mutation
 
 def mutate(offspring, MUT_RATE):
   mutated_offspring = []
@@ -83,9 +82,9 @@ def mutate(offspring, MUT_RATE):
 
 def replace(new_gen, population):
   for _ in range(len(population)):
-      if population[][1] > new_gen[][1]:
-        population[][0] = new_gen[][0]
-        population[][1] = new_gen[][1]
+      if population[_][1] > new_gen[_][1]:
+        population[_][0] = new_gen[_][0]
+        population[_][1] = new_gen[_][1]
   return population
 
 #main
