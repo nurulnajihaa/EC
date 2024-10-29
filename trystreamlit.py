@@ -1,6 +1,6 @@
 import streamlit as st
 st.set_page_config(
-    page_title="Genetic Algorithm"
+  page_title="Genetic Algorithm"
 )
 
 st.header("Genetic Algorithm", divider="gray")
@@ -14,11 +14,11 @@ POP_SIZE = 500
 MUT_RATE = 0.2
 
 #TARGET: Our goal.
-#TARGET = 'nurul'
-TARGET = st.text_input("Enter your name","nurul")
+#TARGET = 'liyana'
+TARGET = st.text_input("Enter your name", "Liyana")
 
 #GENES: Options from which our population would be created.
-GENES = ' abcdefghijklmnopqrstuvwxyz'
+GENES = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 #initialization
 
@@ -67,7 +67,7 @@ def crossover(selected_chromo, CHROMO_LEN, population):
     offspring_cross.extend([child])
   return offspring_cross
 
-    #mutation
+#mutation
 
 def mutate(offspring, MUT_RATE):
   mutated_offspring = []
@@ -83,9 +83,9 @@ def mutate(offspring, MUT_RATE):
 
 def replace(new_gen, population):
   for _ in range(len(population)):
-      if population[_][1] > new_gen[_][1]:
-        population[_][0] = new_gen[_][0]
-        population[_][1] = new_gen[_][1]
+      if population[][1] > new_gen[][1]:
+        population[][0] = new_gen[][0]
+        population[][1] = new_gen[][1]
   return population
 
 #main
@@ -132,4 +132,4 @@ def main(POP_SIZE, MUT_RATE, TARGET, GENES):
       st.write('String: ' + str(population[0][0]) + ' Generation: ' + str(generation) + ' Fitness: ' + str(population[0][1]))
       generation+=1
 
-    result = main(POP_SIZE, MUT_RATE, TARGET, GENES)
+result = main(POP_SIZE, MUT_RATE, TARGET, GENES)
