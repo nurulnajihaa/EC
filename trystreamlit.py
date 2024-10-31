@@ -1,9 +1,9 @@
 import streamlit as st
-#st.set_page_config(
-#    page_title="Genetic Algorithm"
-#)
+st.set_page_config(
+    page_title="Genetic Algorithm"
+)
 
-#st.header("Genetic Algorithm", divider="gray")
+st.header("Genetic Algorithm", divider="gray")
 
 import random
 
@@ -15,7 +15,7 @@ MUT_RATE = 0.2
 
 #TARGET: Our goal.
 #TARGET = 'Nurul'
-TARGET = st.text_input("Enter your name")
+TARGET = st.text_input("Enter your name","Nurul")
 
 
 #GENES: Options from which our population would be created.
