@@ -3,7 +3,7 @@ import streamlit as st
 #    page_title="Genetic Algorithm"
 #)
 
-st.header("Genetic Algorithm", divider="gray")
+#st.header("Genetic Algorithm", divider="gray")
 
 import random
 
