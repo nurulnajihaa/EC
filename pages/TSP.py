@@ -8,10 +8,6 @@ import statistics
 import pandas as pd
 import seaborn as sns
 
-[theme]
-base="dark"
-primaryColor="purple"
-
 st.set_page_config(page_title="Traveling Salesman Problem using Genetic Algorithm")
 st.header("Traveling Salesman", divider="gray")
 
