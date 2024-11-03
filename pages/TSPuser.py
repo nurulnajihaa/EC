@@ -8,6 +8,10 @@ import statistics
 import pandas as pd
 import seaborn as sns
 
+st.set_page_config(page_title="Traveling Salesman Problem using Genetic Algorithm")
+st.header("Traveling Salesman", divider="gray")
+
+# City coordinates and properties
 x = [0,3,6,7,15,10,16,5,8,1.5]
 y = [1,2,1,4.5,-1,2.5,11,6,9,12]
 cities_names = ["Gliwice", "Cairo", "Rome", "Krakow", "Paris", "Alexandria", "Berlin", "Tokyo", "Rio", "Budapest"]
@@ -34,6 +38,9 @@ city_icons = {
     "Budapest": "♝"
 }
 
+# Plot initial city positions and connections
+st.subheader("City Map with Initial Connections")
+
 fig, ax = plt.subplots()
 
 ax.grid(False)  # Grid
@@ -54,7 +61,7 @@ for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
 fig.set_size_inches(16, 12)
 st.pyplot(fig)
 
-#population
+#population (# Functions for the genetic algorithm)
 def initial_population(cities_list, n_population = 250):
 
     """
@@ -261,8 +268,10 @@ def run_ga(cities_names, n_population, n_generations, crossover_per, mutation_pe
 
     return best_mixed_offspring
 
+#st.header("Running Genetic Algorithm", divider="gray")
 best_mixed_offspring = run_ga(cities_names, n_population, n_generations, crossover_per, mutation_per)
 
+st.header("Minimum Distance Calculated")
 total_dist_all_individuals = []
 for i in range(0, n_population):
     total_dist_all_individuals.append(total_dist_individual(best_mixed_offspring[i]))
@@ -279,6 +288,7 @@ st.write(minimum_distance)
 
 #shortest path
 # shortest_path = offspring_list[index_minimum]
+st.header("Shortest Path Found")
 shortest_path = best_mixed_offspring[index_minimum]
 shortest_path
 st.write(shortest_path)
@@ -293,6 +303,8 @@ for city in shortest_path:
 x_shortest.append(x_shortest[0])
 y_shortest.append(y_shortest[0])
 
+
+st.header("Visualization of Shortest Path", divider="gray")
 fig, ax = plt.subplots()
 ax.plot(x_shortest, y_shortest, '--go', label='Best Route', linewidth=2.5)
 plt.legend()
