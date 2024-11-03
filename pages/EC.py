@@ -271,7 +271,7 @@ def run_ga(cities_names, n_population, n_generations, crossover_per, mutation_pe
 #st.header("Running Genetic Algorithm", divider="gray")
 best_mixed_offspring = run_ga(cities_names, n_population, n_generations, crossover_per, mutation_per)
 
-st.subheader("Minimum Distance Calculated")
+st.header("Minimum Distance Calculated")
 total_dist_all_individuals = []
 for i in range(0, n_population):
     total_dist_all_individuals.append(total_dist_individual(best_mixed_offspring[i]))
@@ -288,7 +288,7 @@ st.write(minimum_distance)
 
 #shortest path
 # shortest_path = offspring_list[index_minimum]
-st.subheader("Shortest Path Found")
+st.header("Shortest Path Found")
 shortest_path = best_mixed_offspring[index_minimum]
 shortest_path
 st.write(shortest_path)
