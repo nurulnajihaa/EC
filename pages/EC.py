@@ -9,7 +9,7 @@ import pandas as pd
 import seaborn as sns
 
 st.set_page_config(page_title="Traveling Salesman Problem using Genetic Algorithm")
-st.header("Traveling Salesman Problem - Genetic Algorithm", divider="gray")
+st.header("Traveling Salesman", divider="gray")
 
 # City coordinates and properties
 x = [0,3,6,7,15,10,16,5,8,1.5]
@@ -39,7 +39,7 @@ city_icons = {
 }
 
 # Plot initial city positions and connections
-st.header("City Map with Initial Connections", divider="gray")
+st.title("City Map with Initial Connections", divider="gray")
 
 fig, ax = plt.subplots()
 
