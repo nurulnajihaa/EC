@@ -39,7 +39,7 @@ city_icons = {
 }
 
 # Plot initial city positions and connections
-st.title("City Map with Initial Connections", divider="gray")
+st.title("City Map with Initial Connections")
 
 fig, ax = plt.subplots()
 
