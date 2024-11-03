@@ -19,7 +19,7 @@ TARGET = st.text_input("Enter your name","Nurul")
 TARGET = st.number_input("Enter your mutation rate","0.10")
 
 # Display a button widget
-clicked = st.button("Continue")
+clicked = st.button("Calculate")
 
 #GENES: Options from which our population would be created.
 GENES = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
