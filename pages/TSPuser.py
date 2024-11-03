@@ -12,9 +12,15 @@ st.set_page_config(page_title="Traveling Salesman Problem using Genetic Algorith
 st.header("Traveling Salesman", divider="gray")
 
 # City coordinates and properties
-x = [0,3,6,7,15,10,16,5,8,1.5]
-y = [1,2,1,4.5,-1,2.5,11,6,9,12]
-cities_names = ["Gliwice", "Cairo", "Rome", "Krakow", "Paris", "Alexandria", "Berlin", "Tokyo", "Rio", "Budapest"]
+#x = [0,3,6,7,15,10,16,5,8,1.5]
+#y = [1,2,1,4.5,-1,2.5,11,6,9,12]
+#cities_names = ["Gliwice", "Cairo", "Rome", "Krakow", "Paris", "Alexandria", "Berlin", "Tokyo", "Rio", "Budapest"]
+
+# User inputs for city coordinates and names
+x = st.text_input("Enter X coordinates as comma-separated values (e.g., 0,3,6,...):", "0,3,6,7,15,10,16,5,8,1.5")
+y = st.text_input("Enter Y coordinates as comma-separated values (e.g., 1,2,1,4.5,...):", "1,2,1,4.5,-1,2.5,11,6,9,12")
+city_names = st.text_input("Enter city names as comma-separated values (e.g., Gliwice,Cairo,Rome,...):", "Gliwice,Cairo,Rome,Krakow,Paris,Alexandria,Berlin,Tokyo,Rio,Budapest")
+
 city_coords = dict(zip(cities_names, zip(x, y)))
 n_population = 250
 crossover_per = 0.8
