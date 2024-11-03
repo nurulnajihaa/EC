@@ -16,7 +16,7 @@ MUT_RATE = 0.2
 #TARGET: Our goal.
 #TARGET = 'Nurul'
 TARGET = st.text_input("Enter your name","Nurul")
-#TARGET = st.number_input("Enter your mutation rate")
+MUT_RATE = st.number_input("Enter your mutation rate",0.10)
 
 #GENES: Options from which our population would be created.
 GENES = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -131,9 +131,9 @@ def main(POP_SIZE, MUT_RATE, TARGET, GENES):
 
       if (population[0][1] == 0):
         st.write('Target found')
-        st.writ('String: ' + str(population[0][0]) + ' Generation: ' + str(generation) + ' Fitness: ' + str(population[0][1]))
+        st.write('String: ' + str(population[0][0]) + ' Generation: ' + str(generation) + ' Fitness: ' + str(population[0][1]))
         break
-      st.writ('String: ' + str(population[0][0]) + ' Generation: ' + str(generation) + ' Fitness: ' + str(population[0][1]))
+      st.write('String: ' + str(population[0][0]) + ' Generation: ' + str(generation) + ' Fitness: ' + str(population[0][1]))
       generation+=1
 
 result = main(POP_SIZE, MUT_RATE, TARGET, GENES)
