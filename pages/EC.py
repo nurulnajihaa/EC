@@ -39,7 +39,7 @@ city_icons = {
 }
 
 # Plot initial city positions and connections
-st.title("City Map with Initial Connections")
+st.subheader("City Map with Initial Connections")
 
 fig, ax = plt.subplots()
 
@@ -268,7 +268,7 @@ def run_ga(cities_names, n_population, n_generations, crossover_per, mutation_pe
 
     return best_mixed_offspring
 
-st.header("Running Genetic Algorithm", divider="gray")
+#st.header("Running Genetic Algorithm", divider="gray")
 best_mixed_offspring = run_ga(cities_names, n_population, n_generations, crossover_per, mutation_per)
 
 st.subheader("Minimum Distance Calculated")
@@ -288,7 +288,7 @@ st.write(minimum_distance)
 
 #shortest path
 # shortest_path = offspring_list[index_minimum]
-st.header("Shortest Path Found", divider="gray")
+st.subheader("Shortest Path Found")
 shortest_path = best_mixed_offspring[index_minimum]
 shortest_path
 st.write(shortest_path)
