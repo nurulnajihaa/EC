@@ -21,9 +21,31 @@ st.write("Enter up to 10 cities with their coordinatea(x,y) in range 1-10")
 #x = st.text_input("Enter X coordinates as comma-separated values (e.g., 0,3,6,...):", "0,3,6,7,15,10,16,5,8,1.5")
 #y = st.text_input("Enter Y coordinates as comma-separated values (e.g., 1,2,1,4.5,...):", "1,2,1,4.5,-1,2.5,11,6,9,12")
 #city_names = st.text_input("Enter city names as comma-separated values (e.g., Gliwice,Cairo,Rome,...):", "Gliwice,Cairo,Rome,Krakow,Paris,Alexandria,Berlin,Tokyo,Rio,Budapest")
-city_names = st.text_input("City 1","Kuala Lumpur")
-x = st.number_input("x coordinate (City 1)")
-y = st.number_input("y coordinate (City 1)")
+#city_names = st.text_input("City 1","Kuala Lumpur")
+#x = st.number_input("x coordinate (City 1)")
+#y = st.number_input("y coordinate (City 1)")
+
+# Initialize a list to store city data as [city_name, x_coordinate, y_coordinate]
+cities_data = []
+
+# Define number of cities
+num_cities = st.number_input("Enter the number of cities", min_value=1, max_value=20, value=3)
+
+# Collect coordinates and names for each city
+for i in range(int(num_cities)):
+    city_name = st.text_input(f"City {i + 1} Name", f"City {i + 1}")
+    x_coord = st.number_input(f"X Coordinate (City {i + 1})")
+    y_coord = st.number_input(f"Y Coordinate (City {i + 1})")
+    
+    # Append each city data to the cities_data list as a sublist
+    cities_data.append([city_name, x_coord, y_coord])
+
+# Convert to 3D numpy array for consistency
+cities_array = np.array(cities_data, dtype=object).reshape(-1, 1, 3)  # Reshape to (num_cities, 1, 3) format
+
+# Display the 3D array
+st.write("Cities Data (3D Array):")
+st.write(cities_array)
 
 city_coords = dict(zip(cities_names, zip(x, y)))
 n_population = 250
