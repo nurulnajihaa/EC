@@ -30,12 +30,10 @@ city_names = []
 x_coords = []
 y_coords = []
 
-st.header("Enter the names and coordinates for 10 cities")
-
 for i in range(1, 11):  # Fixed to 10 cities
     city = st.text_input(f"City {i} Name", f"City {i}")
-    x = st.number_input(f"x coordinate (City {i})", value=0.0, step=0.1)
-    y = st.number_input(f"y coordinate (City {i})", value=0.0, step=0.1)
+    x = st.number_input(f"x-coordinate (City {i})", min_value=1, max_value=10, value=0) 
+    y = st.number_input(f"y-coordinate (City {i})", min_value=1, max_value=10, value=0) 
     city_names.append(city)
     x_coords.append(x)
     y_coords.append(y)
