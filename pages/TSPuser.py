@@ -25,78 +25,70 @@ st.write("Enter up to 10 cities with their coordinatea(x,y) in range 1-10")
 #x = st.number_input("x coordinate (City 1)")
 #y = st.number_input("y coordinate (City 1)")
 
-# Define 10 cities input
+# Define fixed 10 cities input
 city_names = []
 x_coords = []
 y_coords = []
 
-for i in range(1, 11):  # Loop for list of 10 cities
-    city_names = st.text_input(f"City {i} Name", f"City {i}")
-    x_coords = st.number_input(f"x-coordinate (City {i})", value=0.0, step=0.1) #min_value=1, max_value=10, value=0) 
-    y_coords = st.number_input(f"y-coordinate (City {i})", value=0.0, step=0.1)
-    city_names.append(city_names)
-    x_coords.append(x_coords)
-    y_coords.append(y_coords)
+st.header("Enter the names and coordinates for 10 cities")
 
-# Ensure all cities have names
-if any(name == "" for name in cities_names):
-    st.warning("Please fill out all city names and coordinates before proceeding.")
-    st.stop()
-    
-# Submit button
-if st.button("Submit"):
-    st.write("City Names:", city_names)
-    st.write("X Coordinates:", x_coords)
-    st.write("Y Coordinates:", y_coords)
+for i in range(1, 11):  # Fixed to 10 cities
+    city = st.text_input(f"City {i} Name", f"City {i}")
+    x = st.number_input(f"x coordinate (City {i})", value=0.0, step=0.1)
+    y = st.number_input(f"y coordinate (City {i})", value=0.0, step=0.1)
+    city_names.append(city)
+    x_coords.append(x)
+    y_coords.append(y)
 
-# Define city coordinates
-city_coords = dict(zip(cities_names, zip(x_coords, y_coords)))
+st.write("City Names:", city_names)
+st.write("X Coordinates:", x_coords)
+st.write("Y Coordinates:", y_coords)
 
-# Genetic Algorithm Parameters
+city_coords = dict(zip(cities_names, zip(x, y)))
 n_population = 250
 crossover_per = 0.8
 mutation_per = 0.2
 n_generations = 200
 
 # Pastel Pallete
-colors = sns.color_palette("pastel", len(city_names))
+colors = sns.color_palette("pastel", len(cities_names))
 
 # City Icons
 city_icons = {
-    "Kuala Lumpur": "♕",
-    "Pahang": "♖",
-    "Kelantan": "♗",
-    "Terengganu": "♘",
-    "Kedah": "♙",
-    "Melaka": "♔",
-    "Johor": "♚",
-    "Perlis": "♛",
-    "Perak": "♜",
-    "Negeri Sembilan": "♝"
+    "Gliwice": "♕",
+    "Cairo": "♖",
+    "Rome": "♗",
+    "Krakow": "♘",
+    "Paris": "♙",
+    "Alexandria": "♔",
+    "Berlin": "♚",
+    "Tokyo": "♛",
+    "Rio": "♜",
+    "Budapest": "♝"
 }
 
+# Plot initial city positions and connections
+st.subheader("City Map with Initial Connections")
 
-# Plotting City Map with Initial Connections
-if st.button("Run Genetic Algorithm"):
-    st.subheader("City Map with Initial Connections") # Plot initial city positions and connections
-    fig, ax = plt.subplots()
-    ax.grid(False)  # Grid
-    
-    for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
-        color = colors[i]
-        icon = city_icons[city]
-        ax.scatter(city_x, city_y, c=[color], s=1200, zorder=2)
-        ax.annotate(icon, (city_x, city_y), fontsize=40, ha='center', va='center', zorder=3)
-        ax.annotate(city, (city_x, city_y), fontsize=12, ha='center', va='bottom', xytext=(0, -30),
+fig, ax = plt.subplots()
+
+ax.grid(False)  # Grid
+
+for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
+    color = colors[i]
+    icon = city_icons[city]
+    ax.scatter(city_x, city_y, c=[color], s=1200, zorder=2)
+    ax.annotate(icon, (city_x, city_y), fontsize=40, ha='center', va='center', zorder=3)
+    ax.annotate(city, (city_x, city_y), fontsize=12, ha='center', va='bottom', xytext=(0, -30),
                 textcoords='offset points')
 
-        # Connect cities with opaque lines
-        for j, (other_city, (other_x, other_y)) in enumerate(city_coords.items()):
-            if i != j:
-                ax.plot([city_x, other_x], [city_y, other_y], color='gray', linestyle='-', linewidth=1, alpha=0.1)
+    # Connect cities with opaque lines
+    for j, (other_city, (other_x, other_y)) in enumerate(city_coords.items()):
+        if i != j:
+            ax.plot([city_x, other_x], [city_y, other_y], color='gray', linestyle='-', linewidth=1, alpha=0.1)
 
-    fig.set_size_inches(16, 12)
-    st.pyplot(fig)
+fig.set_size_inches(16, 12)
+st.pyplot(fig)
 
 #population (# Functions for the genetic algorithm)
 def initial_population(cities_list, n_population = 250):
@@ -305,11 +297,9 @@ def run_ga(cities_names, n_population, n_generations, crossover_per, mutation_pe
 
     return best_mixed_offspring
 
-# Run the Genetic Algorithm
 #st.header("Running Genetic Algorithm", divider="gray")
 best_mixed_offspring = run_ga(cities_names, n_population, n_generations, crossover_per, mutation_per)
 
-# Display Minimum Distance Calculated
 st.header("Minimum Distance Calculated")
 total_dist_all_individuals = []
 for i in range(0, n_population):
@@ -325,7 +315,6 @@ minimum_distance = min(total_dist_all_individuals)
 minimum_distance
 st.write(minimum_distance)
 
-# Display Shortest Path Found
 #shortest path
 # shortest_path = offspring_list[index_minimum]
 st.header("Shortest Path Found")
