@@ -29,7 +29,7 @@ st.write("Enter up to 10 cities with their coordinatea(x,y) in range 1-10")
 cities_data = []
 
 # Define number of cities
-num_cities = st.number_input("Enter the number of cities", min_value=1, max_value=20, value=10)
+#num_cities = st.number_input("Enter the number of cities", min_value=1, max_value=20, value=10)
 
 # Collect coordinates and names for each city
 for i in range(int(num_cities)):
