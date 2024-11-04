@@ -30,14 +30,19 @@ city_names = []
 x_coords = []
 y_coords = []
 
-for i in range(1, 11):  # List of 10 cities
-    city = st.text_input(f"City {i} Name", f"City {i}")
-    x = st.number_input(f"x-coordinate (City {i})", value=0.0, step=0.1) #min_value=1, max_value=10, value=0) 
-    y = st.number_input(f"y-coordinate (City {i})", value=0.0, step=0.1)
-    city_names.append(city)
-    x_coords.append(x)
-    y_coords.append(y)
+for i in range(1, 11):  # Loop for list of 10 cities
+    city_names = st.text_input(f"City {i} Name", f"City {i}")
+    x_coords = st.number_input(f"x-coordinate (City {i})", value=0.0, step=0.1) #min_value=1, max_value=10, value=0) 
+    y_coords = st.number_input(f"y-coordinate (City {i})", value=0.0, step=0.1)
+    city_names.append(city_names)
+    x_coords.append(x_coords)
+    y_coords.append(y_coords)
 
+# Ensure all cities have names
+if any(name == "" for name in cities_names):
+    st.warning("Please fill out all city names and coordinates before proceeding.")
+    st.stop()
+    
 # Submit button
 if st.button("Submit"):
     st.write("City Names:", city_names)
