@@ -25,27 +25,24 @@ st.write("Enter up to 10 cities with their coordinatea(x,y) in range 1-10")
 #x = st.number_input("x coordinate (City 1)")
 #y = st.number_input("y coordinate (City 1)")
 
-# Initialize a list to store city data as [city_name, x_coordinate, y_coordinate]
-cities_data = []
+# Define fixed 10 cities input
+city_names = []
+x_coords = []
+y_coords = []
 
-# Define number of cities
-#num_cities = st.number_input("Enter the number of cities", min_value=1, max_value=20, value=10)
+st.header("Enter the names and coordinates for 10 cities")
 
-# Collect coordinates and names for each city
-for i in range(int(num_cities)):
-    city_name = st.text_input(f"City {i + 1} Name", f"City {i + 1}")
-    x_coord = st.number_input(f"X Coordinate (City {i + 1})")
-    y_coord = st.number_input(f"Y Coordinate (City {i + 1})")
-    
-    # Append each city data to the cities_data list as a sublist
-    cities_data.append([city_name, x_coord, y_coord])
+for i in range(1, 11):  # Fixed to 10 cities
+    city = st.text_input(f"City {i} Name", f"City {i}")
+    x = st.number_input(f"x coordinate (City {i})", value=0.0, step=0.1)
+    y = st.number_input(f"y coordinate (City {i})", value=0.0, step=0.1)
+    city_names.append(city)
+    x_coords.append(x)
+    y_coords.append(y)
 
-# Convert to 3D numpy array for consistency
-cities_array = np.array(cities_data, dtype=object).reshape(-1, 1, 3)  # Reshape to (num_cities, 1, 3) format
-
-# Display the 3D array
-st.write("Cities Data (3D Array):")
-st.write(cities_array)
+st.write("City Names:", city_names)
+st.write("X Coordinates:", x_coords)
+st.write("Y Coordinates:", y_coords)
 
 city_coords = dict(zip(cities_names, zip(x, y)))
 n_population = 250
