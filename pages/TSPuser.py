@@ -25,12 +25,12 @@ st.write("Enter up to 10 cities with their coordinatea(x,y) in range 1-10")
 #x = st.number_input("x coordinate (City 1)")
 #y = st.number_input("y coordinate (City 1)")
 
-# Define fixed 10 cities input
+# Define 10 cities input
 city_names = []
 x_coords = []
 y_coords = []
 
-for i in range(1, 11):  # Fixed to 10 cities
+for i in range(1, 11):  # List of 10 cities
     city = st.text_input(f"City {i} Name", f"City {i}")
     x = st.number_input(f"x-coordinate (City {i})", value=0.0, step=0.1) #min_value=1, max_value=10, value=0) 
     y = st.number_input(f"y-coordinate (City {i})", value=0.0, step=0.1)
@@ -38,9 +38,11 @@ for i in range(1, 11):  # Fixed to 10 cities
     x_coords.append(x)
     y_coords.append(y)
 
-st.write("City Names:", city_names)
-st.write("X Coordinates:", x_coords)
-st.write("Y Coordinates:", y_coords)
+#Submit button
+if st.button("Submit"):
+    st.write("City Names:", city_names)
+    st.write("X Coordinates:", x_coords)
+    st.write("Y Coordinates:", y_coords)
 
 city_coords = dict(zip(cities_names, zip(x, y)))
 n_population = 250
