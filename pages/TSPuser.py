@@ -27,25 +27,25 @@ st.write("Enter up to 10 cities with their coordinatea(x,y) in range 1-10")
 
 # Define 10 cities input
 city_names = []
-x = []
-y = []
+x_coords = []
+y_coords = []
 
 for i in range(1, 11):  # List of 10 cities
     city = st.text_input(f"City {i} Name", f"City {i}")
     x = st.number_input(f"x-coordinate (City {i})", value=0.0, step=0.1) #min_value=1, max_value=10, value=0) 
     y = st.number_input(f"y-coordinate (City {i})", value=0.0, step=0.1)
     city_names.append(city)
-    x.append(x)
-    y.append(y)
+    x_coords.append(x)
+    y_coords.append(y)
 
 # Submit button
 if st.button("Submit"):
     st.write("City Names:", city_names)
-    st.write("X Coordinates:", x)
-    st.write("Y Coordinates:", y)
+    st.write("X Coordinates:", x_coords)
+    st.write("Y Coordinates:", y_coords)
 
 # Define city coordinates
-city_coords = dict(zip(cities_names, zip(x, y)))
+city_coords = dict(zip(cities_names, zip(x_coords, y_coords)))
 n_population = 250
 crossover_per = 0.8
 mutation_per = 0.2
