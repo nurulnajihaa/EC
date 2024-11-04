@@ -46,13 +46,15 @@ if st.button("Submit"):
 
 # Define city coordinates
 city_coords = dict(zip(cities_names, zip(x_coords, y_coords)))
+
+# Genetic Algorithm Parameters
 n_population = 250
 crossover_per = 0.8
 mutation_per = 0.2
 n_generations = 200
 
 # Pastel Pallete
-colors = sns.color_palette("pastel", len(cities_names))
+colors = sns.color_palette("pastel", len(city_names))
 
 # City Icons
 city_icons = {
@@ -68,29 +70,28 @@ city_icons = {
     "Negeri Sembilan": "♝"
 }
 
-# Plot initial city positions and connections
-st.subheader("City Map with Initial Connections")
 
-fig, ax = plt.subplots()
-
-ax.grid(False)  # Grid
-
-# Plot cities and icons
-for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
-    color = colors[i]
-    icon = city_icons[city]
-    ax.scatter(city_x, city_y, c=[color], s=1200, zorder=2)
-    ax.annotate(icon, (city_x, city_y), fontsize=40, ha='center', va='center', zorder=3)
-    ax.annotate(city, (city_x, city_y), fontsize=12, ha='center', va='bottom', xytext=(0, -30),
+# Plotting City Map with Initial Connections
+if st.button("Run Genetic Algorithm"):
+    st.subheader("City Map with Initial Connections") # Plot initial city positions and connections
+    fig, ax = plt.subplots()
+    ax.grid(False)  # Grid
+    
+    for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
+        color = colors[i]
+        icon = city_icons[city]
+        ax.scatter(city_x, city_y, c=[color], s=1200, zorder=2)
+        ax.annotate(icon, (city_x, city_y), fontsize=40, ha='center', va='center', zorder=3)
+        ax.annotate(city, (city_x, city_y), fontsize=12, ha='center', va='bottom', xytext=(0, -30),
                 textcoords='offset points')
 
-    # Connect cities with opaque lines
-    for j, (other_city, (other_x, other_y)) in enumerate(city_coords.items()):
-        if i != j:
-            ax.plot([city_x, other_x], [city_y, other_y], color='gray', linestyle='-', linewidth=1, alpha=0.1)
+        # Connect cities with opaque lines
+        for j, (other_city, (other_x, other_y)) in enumerate(city_coords.items()):
+            if i != j:
+                ax.plot([city_x, other_x], [city_y, other_y], color='gray', linestyle='-', linewidth=1, alpha=0.1)
 
-fig.set_size_inches(16, 12)
-st.pyplot(fig)
+    fig.set_size_inches(16, 12)
+    st.pyplot(fig)
 
 #population (# Functions for the genetic algorithm)
 def initial_population(cities_list, n_population = 250):
