@@ -9,41 +9,12 @@ import pandas as pd
 import seaborn as sns
 
 st.set_page_config(page_title="Traveling Salesman Problem using Genetic Algorithm")
-st.title("City Coordinates Input")
+st.header("Traveling Salesman", divider="gray")
 
 # City coordinates and properties
-#x = [0,3,6,7,15,10,16,5,8,1.5]
-#y = [1,2,1,4.5,-1,2.5,11,6,9,12]
-#cities_names = ["Gliwice", "Cairo", "Rome", "Krakow", "Paris", "Alexandria", "Berlin", "Tokyo", "Rio", "Budapest"]
-
-# User inputs for city coordinates and names
-st.write("Enter up to 10 cities with their coordinatea(x,y) in range 1-10")
-#x = st.text_input("Enter X coordinates as comma-separated values (e.g., 0,3,6,...):", "0,3,6,7,15,10,16,5,8,1.5")
-#y = st.text_input("Enter Y coordinates as comma-separated values (e.g., 1,2,1,4.5,...):", "1,2,1,4.5,-1,2.5,11,6,9,12")
-#city_names = st.text_input("Enter city names as comma-separated values (e.g., Gliwice,Cairo,Rome,...):", "Gliwice,Cairo,Rome,Krakow,Paris,Alexandria,Berlin,Tokyo,Rio,Budapest")
-#city_names = st.text_input("City 1","Kuala Lumpur")
-#x = st.number_input("x coordinate (City 1)")
-#y = st.number_input("y coordinate (City 1)")
-
-# Define fixed 10 cities input
-city_names = []
-x_coords = []
-y_coords = []
-
-st.header("Enter the names and coordinates for 10 cities")
-
-for i in range(1, 11):  # Fixed to 10 cities
-    city = st.text_input(f"City {i} Name", f"City {i}")
-    x = st.number_input(f"x coordinate (City {i})", value=0.0, step=0.1)
-    y = st.number_input(f"y coordinate (City {i})", value=0.0, step=0.1)
-    city_names.append(city)
-    x_coords.append(x)
-    y_coords.append(y)
-
-st.write("City Names:", city_names)
-st.write("X Coordinates:", x_coords)
-st.write("Y Coordinates:", y_coords)
-
+x = [0,3,6,7,15,10,16,5,8,1.5]
+y = [1,2,1,4.5,-1,2.5,11,6,9,12]
+cities_names = ["Gliwice", "Cairo", "Rome", "Krakow", "Paris", "Alexandria", "Berlin", "Tokyo", "Rio", "Budapest"]
 city_coords = dict(zip(cities_names, zip(x, y)))
 n_population = 250
 crossover_per = 0.8
@@ -357,3 +328,4 @@ for i, txt in enumerate(shortest_path):
 fig.set_size_inches(16, 12)
 # plt.grid(color='k', linestyle='dotted')
 st.pyplot()
+
