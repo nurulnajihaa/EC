@@ -53,16 +53,16 @@ colors = sns.color_palette("pastel", len(cities_names))
 
 # City Icons
 city_icons = {
-    "Gliwice": "♕",
-    "Cairo": "♖",
-    "Rome": "♗",
-    "Krakow": "♘",
-    "Paris": "♙",
-    "Alexandria": "♔",
-    "Berlin": "♚",
-    "Tokyo": "♛",
-    "Rio": "♜",
-    "Budapest": "♝"
+    "Kuala Lumpur": "♕",
+    "Pahang": "♖",
+    "Kelantan": "♗",
+    "Terengganu": "♘",
+    "Kedah": "♙",
+    "Melaka": "♔",
+    "Johor": "♚",
+    "Perlis": "♛",
+    "Perak": "♜",
+    "Negeri Sembilan": "♝"
 }
 
 # Plot initial city positions and connections
