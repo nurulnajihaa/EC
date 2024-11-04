@@ -27,23 +27,24 @@ st.write("Enter up to 10 cities with their coordinatea(x,y) in range 1-10")
 
 # Define 10 cities input
 city_names = []
-x_coords = []
-y_coords = []
+x = []
+y = []
 
 for i in range(1, 11):  # List of 10 cities
     city = st.text_input(f"City {i} Name", f"City {i}")
     x = st.number_input(f"x-coordinate (City {i})", value=0.0, step=0.1) #min_value=1, max_value=10, value=0) 
     y = st.number_input(f"y-coordinate (City {i})", value=0.0, step=0.1)
     city_names.append(city)
-    x_coords.append(x)
-    y_coords.append(y)
+    x.append(x)
+    y.append(y)
 
-#Submit button
+# Submit button
 if st.button("Submit"):
     st.write("City Names:", city_names)
-    st.write("X Coordinates:", x_coords)
-    st.write("Y Coordinates:", y_coords)
+    st.write("X Coordinates:", x)
+    st.write("Y Coordinates:", y)
 
+# Define city coordinates
 city_coords = dict(zip(cities_names, zip(x, y)))
 n_population = 250
 crossover_per = 0.8
@@ -74,6 +75,7 @@ fig, ax = plt.subplots()
 
 ax.grid(False)  # Grid
 
+# Plot cities and icons
 for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
     color = colors[i]
     icon = city_icons[city]
@@ -297,9 +299,11 @@ def run_ga(cities_names, n_population, n_generations, crossover_per, mutation_pe
 
     return best_mixed_offspring
 
+# Run the Genetic Algorithm
 #st.header("Running Genetic Algorithm", divider="gray")
 best_mixed_offspring = run_ga(cities_names, n_population, n_generations, crossover_per, mutation_per)
 
+# Display Minimum Distance Calculated
 st.header("Minimum Distance Calculated")
 total_dist_all_individuals = []
 for i in range(0, n_population):
@@ -315,6 +319,7 @@ minimum_distance = min(total_dist_all_individuals)
 minimum_distance
 st.write(minimum_distance)
 
+# Display Shortest Path Found
 #shortest path
 # shortest_path = offspring_list[index_minimum]
 st.header("Shortest Path Found")
